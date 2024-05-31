@@ -155,6 +155,8 @@ button:hover {
   align-items: center;
   gap: 10px;
   justify-content: center;
+  text-align: center;
+  list-style-type: none;
 }
 
 .results h1 {
