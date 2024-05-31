@@ -84,7 +84,14 @@ app.post("/submit", async (req, res) => {
       result.numero5,
       result.numero6,
     ]
-    return selectedNumbers.every((num) => resultNumbers.includes(num))
+
+    // Contar o número de coincidências
+    const matchCount = selectedNumbers.filter((num) =>
+      resultNumbers.includes(num)
+    ).length
+
+    // Verificar se há pelo menos 6 coincidências
+    return matchCount >= 6
   })
 
   if (matchingResults.length > 0) {
