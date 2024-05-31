@@ -166,6 +166,10 @@ button:hover {
   margin-bottom: 10px;
 }
 
+.results h2 {
+  text-align: center;
+}
+
 .results a {
   text-decoration: none;
   color: #25940f;
