@@ -181,6 +181,13 @@ button:hover {
   font-weight: bold;
 }
 
+@media screen and (max-width: 640px) {
+  .results li {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 /* FOOTER */
 
 footer {
