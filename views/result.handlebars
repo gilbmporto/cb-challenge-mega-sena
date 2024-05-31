@@ -5,11 +5,11 @@
     <ul>
       {{#each matches4}}
         <li>
-          <p>Concurso
+          <span>Concurso
             <span class="bold">{{this.concurso}}</span>: acertou
             {{this.matchCount}}
-            números:</p>
-          {{this.resultNumbers}}
+            números:</span>
+          <span>{{join this.resultNumbers " "}}</span>
         </li>
       {{/each}}
     </ul>
@@ -20,11 +20,11 @@
     <ul>
       {{#each matches5}}
         <li>
-          <p>Concurso
+          <span>Concurso
             <span class="bold">{{this.concurso}}</span>: acertou
             {{this.matchCount}}
-            números:</p>
-          <span>{{this.resultNumbers}}</span>
+            números:</span>
+          <span>{{join this.resultNumbers " "}}</span>
         </li>
       {{/each}}
     </ul>
@@ -35,18 +35,19 @@
     <ul>
       {{#each matches6}}
         <li>
-          <p>Concurso
+          <span>Concurso
             <span class="bold">{{this.concurso}}</span>: acertou
             {{this.matchCount}}
-            números:</p>
-          {{this.resultNumbers}}
+            números:</span>
+          <span>{{join this.resultNumbers " "}}</span>
         </li>
       {{/each}}
     </ul>
   {{/if}}
 
   {{#unless (or matches4.length matches5.length matches6.length)}}
-    <p>Infelizmente, você não acertou nenhum concurso com no mínimo 4 números.</p>
+    <span>Infelizmente, você não acertou nenhum concurso com no mínimo 4
+      números.</span>
   {{/unless}}
 
   <a href="/">Voltar</a>
