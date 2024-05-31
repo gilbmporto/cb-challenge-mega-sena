@@ -185,6 +185,18 @@ button:hover {
   font-weight: bold;
 }
 
+.selected-numbers {
+  text-align: center;
+}
+
+.selected-numbers h2 {
+  margin-bottom: 10px;
+}
+
+.selected-numbers p {
+  font-size: 17px;
+}
+
 @media screen and (max-width: 640px) {
   .results li {
     display: flex;

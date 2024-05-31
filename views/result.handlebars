@@ -1,5 +1,10 @@
 <section class="results">
   <h1>{{title}}</h1>
+  <div class="selected-numbers">
+    <h2><span class="bold">Números escolhidos:</span>
+    </h2>
+    <p>{{join selectedNumbers " "}}</p>
+  </div>
   {{#if matches4.length}}
     <h2>Você acertou 4 números nos seguintes concursos:</h2>
     <ul>
