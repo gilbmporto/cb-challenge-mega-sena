@@ -194,6 +194,26 @@ button:hover {
   }
 }
 
+/* ABOUT */
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  justify-content: center;
+}
+
+.github-link {
+  text-decoration: none;
+  color: #25940f;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.github-link:hover {
+  color: #4caf50;
+}
+
 /* FOOTER */
 
 footer {

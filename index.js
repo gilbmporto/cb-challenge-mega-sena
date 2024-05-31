@@ -71,11 +71,11 @@ app.use((req, res, next) => {
 // public
 app.use(express.static("public"))
 
-app.get("/:slug", async (req, res) => {
-  res.render("development")
+// routes
+app.get("/about", (_, res) => {
+  res.render("about")
 })
 
-// routes
 app.get("/", (_, res) => {
   const numbers = Array.from({ length: 60 }, (_, i) => i + 1)
   res.render("home", { title: "Escolha de 6 à 15 números", numbers })
