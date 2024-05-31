@@ -139,6 +139,46 @@ button:hover {
   margin: 20px 0;
 }
 
+/* RESULTS */
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.results ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.results h1 {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.results a {
+  text-decoration: none;
+  color: #25940f;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.results a:hover {
+  color: #4caf50;
+}
+
+.results .bold {
+  font-weight: bold;
+}
+
 /* FOOTER */
 
 footer {

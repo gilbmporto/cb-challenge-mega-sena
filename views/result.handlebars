@@ -1,0 +1,53 @@
+<section class="results">
+  <h1>{{title}}</h1>
+  {{#if matches4.length}}
+    <h2>Você acertou 4 números nos seguintes concursos:</h2>
+    <ul>
+      {{#each matches4}}
+        <li>
+          Concurso
+          <span class="bold">{{this.concurso}}</span>: acertou
+          {{this.matchCount}}
+          números:
+          {{this.resultNumbers}}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#if matches5.length}}
+    <h2>Você acertou 5 números nos seguintes concursos:</h2>
+    <ul>
+      {{#each matches5}}
+        <li>
+          Concurso
+          <span class="bold">{{this.concurso}}</span>: acertou
+          {{this.matchCount}}
+          números:
+          {{this.resultNumbers}}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#if matches6.length}}
+    <h2>Você acertou 6 números nos seguintes concursos:</h2>
+    <ul>
+      {{#each matches6}}
+        <li>
+          Concurso
+          <span class="bold">{{this.concurso}}</span>: acertou
+          {{this.matchCount}}
+          números:
+          {{this.resultNumbers}}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#unless (or matches4.length matches5.length matches6.length)}}
+    <p>Infelizmente, você não acertou nenhum concurso com no mínimo 4 números.</p>
+  {{/unless}}
+
+  <a href="/">Voltar</a>
+</section>

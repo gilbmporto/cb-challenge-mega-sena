@@ -18,7 +18,18 @@ require("./models/User")
 const Result = require("./models/Result")
 
 // template engine
-app.engine("handlebars", exphbs.engine())
+const hbs = exphbs.create({
+  helpers: {
+    toDateString: (date) => {
+      return new Date(date).toLocaleDateString("pt-BR")
+    },
+    or: () => {
+      return Array.prototype.slice.call(arguments, 0, -1).some(Boolean)
+    },
+  },
+})
+
+app.engine("handlebars", hbs.engine)
 app.set("view engine", "handlebars")
 
 // body parser
@@ -71,39 +82,52 @@ app.post("/submit", async (req, res) => {
   const selectedNumbers = req.body.selectedNumbers.split(",").map(Number)
 
   if (selectedNumbers.length < 6 || selectedNumbers.length > 15) {
-    return res.send("Por favor, selecione entre 6 e 15 números.")
+    req.flash("message", "Por favor, selecione entre 6 e 15 números.")
+    return res.redirect("/")
   }
 
   const results = await Result.findAll()
-  const matchingResults = results.filter((result) => {
-    const resultNumbers = [
-      result.numero1,
-      result.numero2,
-      result.numero3,
-      result.numero4,
-      result.numero5,
-      result.numero6,
-    ]
+  const matchingResults = results
+    .map((result) => {
+      const resultNumbers = [
+        result.numero1,
+        result.numero2,
+        result.numero3,
+        result.numero4,
+        result.numero5,
+        result.numero6,
+      ]
 
-    // Contar o número de coincidências
-    const matchCount = selectedNumbers.filter((num) =>
-      resultNumbers.includes(num)
-    ).length
+      // Contar o número de coincidências
+      const matchCount = selectedNumbers.filter((num) =>
+        resultNumbers.includes(num)
+      ).length
 
-    // Verificar se há pelo menos 6 coincidências
-    return matchCount >= 6
+      // Verificar se há pelo menos 4 coincidências
+      if (matchCount >= 4) {
+        return {
+          concurso: result.concurso,
+          data: result.data,
+          matchCount: matchCount,
+          resultNumbers: resultNumbers,
+        }
+      }
+      return null
+    })
+    .filter((result) => result !== null)
+
+  // Separar os resultados por número de acertos
+  const matches4 = matchingResults.filter((result) => result.matchCount === 4)
+  const matches5 = matchingResults.filter((result) => result.matchCount === 5)
+  const matches6 = matchingResults.filter((result) => result.matchCount === 6)
+
+  res.render("result", {
+    title: "Resultados da Mega-Sena",
+    matches4,
+    matches5,
+    matches6,
+    selectedNumbers,
   })
-
-  if (matchingResults.length > 0) {
-    req.flash(
-      "message",
-      `Parabéns! Você acertou ${matchingResults.length} concurso(s).`
-    )
-    res.redirect("/")
-  } else {
-    req.flash("message", "Infelizmente, você não acertou nenhum concurso.")
-    res.redirect("/")
-  }
 })
 
 // listen
