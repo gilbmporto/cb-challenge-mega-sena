@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
+}
+
+.navbar {
+  background-color: #333;
+  width: 100%;
+  padding: 1rem 3rem;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 0.5rem;
+  list-style-type: none;
+  align-items: center;
+}
+
+.navbar ul li {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #25940f;
+}
+
+.navbar img {
+  height: 100px;
+}
+
+/* MESSAGES */
+
+.message {
+  padding: 1rem 2rem;
+  border: 1px solid #b8daff;
+  border-radius: 0.25rem;
+  margin: 0 auto;
+  max-width: 450px;
+  text-align: center;
+}
+
+/* CONTAINER */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+  min-height: calc(100vh - 240px);
+}
+
+.container h1 {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  row-gap: 40px;
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 640px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .container section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .numbers-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+  }
+}
+
+.number-circle {
+  width: 50px;
+  height: 50px;
+  background: #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.number-circle.selected {
+  background: #4caf50;
+  color: #fff;
+}
+
+button {
+  background: #4caf50;
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+.submit-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: #222;
+  padding: 1rem 1.3rem;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #25940f;
+}
+
+footer p {
+  font-size: 20px;
+  color: white;
+}
+
+footer span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #25940f;
+}
