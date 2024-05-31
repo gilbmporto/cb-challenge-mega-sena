@@ -29,6 +29,9 @@ const hbs = exphbs.create({
     join: (array, separator) => {
       return array.join(separator)
     },
+    not: function (value) {
+      return !value
+    },
   },
 })
 

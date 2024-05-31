@@ -45,9 +45,12 @@
     </ul>
   {{/if}}
 
-  {{#unless (or matches4.length matches5.length matches6.length)}}
-    <span>Infelizmente, você não acertou nenhum concurso com no mínimo 4
-      números.</span>
+  {{#unless matches4.length}}
+    {{#unless matches5.length}}
+      {{#unless matches6.length}}
+        <span>Infelizmente, você não acertou nenhum concurso.</span>
+      {{/unless}}
+    {{/unless}}
   {{/unless}}
 
   <a href="/">Voltar</a>
