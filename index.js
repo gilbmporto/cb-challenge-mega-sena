@@ -75,7 +75,7 @@ app.post("/submit", async (req, res) => {
   }
 
   const results = await Result.findAll()
-  const matchingResult = results.find((result) => {
+  const matchingResults = results.filter((result) => {
     const resultNumbers = [
       result.numero1,
       result.numero2,
@@ -87,8 +87,11 @@ app.post("/submit", async (req, res) => {
     return selectedNumbers.every((num) => resultNumbers.includes(num))
   })
 
-  if (matchingResult) {
-    req.flash("message", "Parabéns! Você acertou um concurso.")
+  if (matchingResults.length > 0) {
+    req.flash(
+      "message",
+      `Parabéns! Você acertou ${matchingResults.length} concurso(s).`
+    )
     res.redirect("/")
   } else {
     req.flash("message", "Infelizmente, você não acertou nenhum concurso.")
