@@ -85,7 +85,10 @@ app.get("/", (_, res) => {
 })
 
 app.post("/submit", async (req, res) => {
-  const selectedNumbers = req.body.selectedNumbers.split(",").map(Number)
+  const selectedNumbers = req.body.selectedNumbers
+    .split(",")
+    .map(Number)
+    .sort((a, b) => a - b)
 
   if (selectedNumbers.length < 6 || selectedNumbers.length > 15) {
     req.flash("message", "Por favor, selecione entre 6 e 15 números.")
